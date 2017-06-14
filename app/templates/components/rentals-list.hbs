@@ -1,0 +1,8 @@
+<h2>{{title}}</h2>
+<ul>
+  {{#each rentals as | rental|}}
+    <li {{action "showRental" rental}}>
+      {{rental-listing rental=rental}}
+    </li>
+  {{/each}}
+</ul>
