@@ -1,2 +1,8 @@
-Next Up:
-https://guides.emberjs.com/v2.13.0/tutorial/autocomplete-component/
+- Components must have at least one dash in their name
+
+- For a list of all the different events a component can use:
+https://github.com/emberjs/ember.js/blob/master/packages/ember-views/lib/system/event_dispatcher.js#L65-L91
+
+Want component Styles?
+- ember install ember-cli-sass
+- ember install ember-component-css

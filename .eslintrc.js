@@ -1,7 +1,4 @@
 module.exports = {
-  globals: {
-    server: true,
-  },
   root: true,
   parserOptions: {
     ecmaVersion: 2017,
@@ -12,5 +9,6 @@ module.exports = {
     browser: true
   },
   rules: {
+    semi: ["off"]
   }
 };

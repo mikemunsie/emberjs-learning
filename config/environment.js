@@ -6,6 +6,9 @@ module.exports = function(environment) {
     environment: environment,
     rootURL: '/',
     locationType: 'auto',
+    'ember-component-css': {
+      classicStyleDir: 'my-styles'
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -18,6 +21,7 @@ module.exports = function(environment) {
     },
 
     APP: {
+
       // Here you can pass flags/options to your application instance
       // when it is created
     }

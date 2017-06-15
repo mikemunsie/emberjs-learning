@@ -7,13 +7,11 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('rentals');
+  this.route('rentals', function() {
+    this.route('show', { path: '/:rental_id' });
+  });
   this.route('about');
   this.route('contact');
-});
-
-Router.reopen({
-  location: 'hash'
 });
 
 export default Router;
