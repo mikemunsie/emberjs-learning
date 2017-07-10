@@ -8,6 +8,8 @@ const Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('rentals', function() {
+
+    // This will use the "show" route when it matches this path
     this.route('show', { path: '/:rental_id' });
   });
   this.route('about');

@@ -1,3 +1,7 @@
+==========================================
+GENERAL
+==========================================
+
 - Components must have at least one dash in their name
 
 - For a list of all the different events a component can use:
@@ -6,3 +10,133 @@ https://github.com/emberjs/ember.js/blob/master/packages/ember-views/lib/system/
 Want component Styles?
 - ember install ember-cli-sass
 - ember install ember-component-css
+
+What is {{outlet}}? Any nested route will be rendered in that place.
+Route? For now, you can think of routes as being the different pages that make up your application.
+
+==========================================
+ADDONS
+==========================================
+
+Ember addons are NPM packages
+Where to go for addons: https://emberobserver.com/
+
+==========================================
+EMBER-DATA
+==========================================
+
+By default Ember expects JSON from an API to follow this spec:
+http://jsonapi.org/
+
+==========================================
+ROUTES
+==========================================
+
+https://guides.emberjs.com/v2.14.0/routing/defining-your-routes/
+
+The entire app starts the first route at application route. From there you define your header, footer, etc
+
+To create a nested route: ember g route parent/child
+{{#link-to "parent.child" rental}}{{rental.title}}{{/link-to}}
+
+this.route('about', { path: '/about' }); is the same as this.route('about');
+
+Inside your templates, you can use {{link-to}} to navigate between routes, using the name that you provided to the route method.
+The {{link-to}} helper will also add an active class to the link that points to the currently active route.
+
+Multi-word route names are conventionally dasherized, such as: blog-post
+
+Nested Routes:
+---------------
+Router.map(function() {
+  this.route('posts', function() {
+    this.route('new');
+  });
+});
+ember generate route posts/new
+
+{{outlet}} will display the content of your nested route.
+
+Dynamic Segments:
+---------------
+this.route('post', { path: '/post/:post_id' });
+
+Wilcard routes:
+---------------
+Router.map(function() {
+  this.route('not-found', { path: '/*path' });
+});
+
+Route Model:
+---------------
+Get data before the route even shows. It can be an array, object, or even a promise. If it's a promise, it will wait until it resolves.
+
+ex:
+export default Ember.Route.extend({
+  model() {
+    return this.get('store').query('post', { favorite: true });
+  }
+});
+
+Do you have params in the route? Access it like this:
+
+export default Ember.Route.extend({
+  model(params) {
+    return this.get('store').findRecord('photo', params.photo_id);
+  }
+});
+
+
+You can also use the link-to helper:
+{{#link-to 'photo' photo}}
+
+Multiple models can be returned through an RSVP.hash. The RSVP.hash takes parameters that return promises,
+and when all parameter promises resolve, then the RSVP.hash promise resolves. For example:
+export default Ember.Route.extend({
+  model() {
+    return RSVP.hash({
+      songs: this.get('store').findAll('song'),
+      albums: this.get('store').findAll('album')
+    });
+  }
+});
+Basically it's a promise.all
+
+Render a different template:
+---------------
+export default Ember.Route.extend({
+  templateName: 'posts/favorite-posts'
+});
+
+==========================================
+EMBER OBJECTS
+==========================================
+If an object is going to support Ember's binding system you may see an Ember.Object instead of a plain object.
+
+For instances:
+By convention, properties or variables that hold classes are PascalCased, while instances are not.
+So, for example, the variable Person would point to a class, while person would point to an instance
+(usually of the Person class). You should stick to these naming conventions in your Ember applications.
+
+IF you don't use getters or setters, computed properties won't recalculate, observers won't fire, and templates won't update.
+see: https://guides.emberjs.com/v2.14.0/object-model/classes-and-instances/
+
+==========================================
+COMPUTED PROPS:
+==========================================
+
+Computed props can look at nested props! So you can look at person.name, person.age
+
+==========================================
+OBSERVERS:
+==========================================
+
+You should rarely have to use them. Computer props are the standard.
+Observers in Ember are currently synchronous. This means that they will fire as soon as one of the properties they
+observe changes. Because of this, it is easy to introduce bugs where properties are not yet synchronized.
+
+==========================================
+ARRAY MANIPULATION
+==========================================
+
+https://guides.emberjs.com/v2.14.0/object-model/enumerables/

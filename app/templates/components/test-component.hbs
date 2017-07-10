@@ -1,3 +1,23 @@
-{{input value=myInput}}
-<span>Show me the {{myInput}}</span>
-<button onclick={{action 'changeValue'}}>Click me homie</button>
+Here a few things that were / were not passed to me:
+<ul>
+  <li>Name: {{name}}</li>
+  <li>Custom Function:
+    <input type="button" onClick={{customClick}} value="Click Me" />
+  </li>
+  <li>Computed Function Test:
+    <br/>
+    What is your name? {{fullName}}
+    {{input type="text" value=yourName}}
+  </li>
+  <li>Component Test Function (without component scope):
+    <input type="button" onClick={{actions.testFunctionFromComponent}} value="Click Me" />
+  </li>
+  <li>Component Test Function (with component scope):
+    <input type="button" onClick={{action "testFunctionFromComponent"}} value="Click Me" />
+  </li>
+  <li>
+    Here's the child stuff you passed to me:
+    <br/>
+    {{yield}}
+  </li>
+</ul>
