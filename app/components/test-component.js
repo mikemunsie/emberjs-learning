@@ -25,7 +25,7 @@ let yehuda = Soldier.create({
 
 export default Ember.Component.extend({
   didInsertElement() {
-    console.log("I just inserted the element")
+
   },
   fullName: Ember.computed('yourName', function() {
     const name = this.yourName ? this.get("yourName") : "I don't know your name";

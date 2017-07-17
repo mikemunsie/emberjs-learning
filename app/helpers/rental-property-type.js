@@ -14,6 +14,6 @@ export function rentalPropertyType([propertyType]) {
     return 'Community';
   }
   return 'Standalone';
-};
+}
 
 export default Ember.Helper.helper(rentalPropertyType);
