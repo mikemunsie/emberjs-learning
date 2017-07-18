@@ -1,0 +1,13 @@
+{{yield (hash
+  switch=(component 'test-component5' 
+    checked=checked 
+    onchange=(action "change")
+    uid=uid
+  )
+  clickCheckbox=(action "change")
+  label=(component 'test-component6'
+    checked=checked
+    onchange=(action "change")
+    uid=uid
+  )
+)}}

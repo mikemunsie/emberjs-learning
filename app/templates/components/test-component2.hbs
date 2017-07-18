@@ -1,0 +1,5 @@
+<p>Sup, I'm component 2. I'm gonna pass you "sample", and render the "test-component3" with the values you pass to "sample".</p>
+{{yield (hash
+  c3=(component "test-component3" text=text c2=this)
+  c4=(component "test-component4" text=text)
+)}}

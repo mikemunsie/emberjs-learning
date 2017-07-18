@@ -7,6 +7,8 @@ export default Ember.Controller.extend({
     alert("Test Function homie");
   },
 
+  checkedValue: true,
+
   // Custom actions (which do we need in the actions section?)
   actions: {
     test() {

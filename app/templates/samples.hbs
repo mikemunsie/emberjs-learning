@@ -1,0 +1,43 @@
+<div class="test_components">
+  <h4>test-component</h4>
+  {{#test-component
+    name="My Test Component"
+    customClick=test
+  }}
+    <strong>I'm the child html passed in</strong>
+  {{/test-component}}
+</div>
+
+<br/>
+<br/>
+
+<div class="test_components">
+  <h4>test-component2 (Contextual Component example)</h4>
+  {{#test-component2 as |t2|}}
+    {{t2.c4 text="testing"}}
+    {{t2.c3 text="testing2"}}
+    {{t2.c4 text="testing"}}
+    {{t2.c4 text="testing"}}
+  {{/test-component2}}
+</div>
+
+<br/>
+<br/>
+<div class="test_components">
+  <h4>test-component-container (Higher order component)</h4>
+  {{checkedValue}}
+  {{#test-component-container checked=checkedValue as |t|}}
+    {{t.switch}}
+    <input type="button" value="Click me to toggle da box" onclick={{action t.clickCheckbox}} />
+  {{/test-component-container}}
+</div>
+
+<br/>
+<br/>
+<div class="test_components">
+  <p>You selected: {{selectVal}}</p>
+  <select onchange={{action (mut selectVal) value="target.value"}}>
+    <option value="option1">Option 1</option>
+    <option value="option2">Option 2</option>
+  </select>
+</div>
